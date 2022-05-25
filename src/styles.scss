@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import "global-partials-styles/fonts.scss";
+@import "global-partials-styles/content.scss";
+@import "global-partials-styles/forms.scss";
+
+/* Reset the margin and padding of everything so we can get rid of the white border that the browser gives us by default*/
+* {
+    margin: 0;
+    padding: 0;
+}
+

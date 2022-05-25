@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+$logo-font: 'Monoton', cursive;
+$text-font: 'Rubik', sans-serif;
+
+.app-title {
+    font-family: $logo-font;
+    font-size: 5em;
+}
+
+h1 {
+    font-family: $text-font;
+    margin-bottom: 10px;
+}
+
+input {
+    font-size: $text-font;
+}

@@ -22,7 +22,7 @@ export class CreateProfileComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.getProfiles();
+    this.getProfiles(); // This is so we can check and make sure there are no duplicates
   }
 
   getProfiles(): void {
@@ -30,6 +30,8 @@ export class CreateProfileComponent implements OnInit {
   }
 
   addProfile(): void {
+    // TODO Validate the user inputs here.
+
     // The server will generate the id for this new profile
     const newProfile: Profile = { userName: this.userNameInput.nativeElement.value, password: this.passwordInput.nativeElement.value, email: this.emailInput.nativeElement.value } as Profile;
     this.profilesService
