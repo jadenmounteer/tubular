@@ -3,5 +3,7 @@ placeholder="Email or User Name"
 #userNameInput
 ><br>
 <input placeholder="Password" #passwordInput type="password"><br>
-<button>Login</button><br>
+<button (click)="login()">Login</button><br>
 <a routerLink="/create-profile" routerLinkActive="active">New to Tubular? Click here to create an account.</a>
+
+<div class="error-message" [style.opacity]="valid ? '0' : '1'" [style.backgroundColor]="valid ? 'white' : 'red'"> {{ errorMessage }}</div>

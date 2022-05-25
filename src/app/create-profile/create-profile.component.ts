@@ -34,8 +34,6 @@ export class CreateProfileComponent implements OnInit {
   }
 
   addProfile(): void {
-    // TODO Validate the user inputs here.
-
     // The server will generate the id for this new profile
     const newProfile: Profile = { userName: this.userNameInput.nativeElement.value, password: this.passwordInput.nativeElement.value, email: this.emailInput.nativeElement.value } as Profile;
     this.profilesService
@@ -83,16 +81,12 @@ export class CreateProfileComponent implements OnInit {
     this.validatePassword();
     this.validateUserName();
     
-
-    
     if (this.valid){
       this.addProfile();
 
       // If the information is valid, navigate the user to the login page...
       this.route.navigate(['']);
-
     }
-    
   }
 
 }
