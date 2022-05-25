@@ -46,7 +46,6 @@ export class CreateProfileComponent implements OnInit {
   validateUserName() {
     const userName = this.userNameInput.nativeElement.value;
 
-    console.log(userName.length);
     // Check if user name is not blank
     if (userName.length == 0) {
       this.errorMessage = "Username cannot be blank";
@@ -60,22 +59,37 @@ export class CreateProfileComponent implements OnInit {
       if (profile.userName == userName) {
         this.errorMessage = "Username is already taken";
         this.userNameInput.nativeElement.focus();
-      this.valid = false;
+        this.valid = false;
         return;
       }
     });
   }
 
+  validatePassword() {
+    const password = this.passwordInput.nativeElement.value;
+    
+    // Check if password is not blank
+    if (password.length == 0) {
+      this.errorMessage = "Password cannot be blank";
+      this.passwordInput.nativeElement.focus();
+      this.valid = false;
+      return;
+    }
+
+  }
+
   submit() {
     this.valid = true;
+    this.validatePassword();
     this.validateUserName();
     
+
     
     if (this.valid){
       this.addProfile();
 
-    // If the information is valid, navigate the user to the login page...
-    this.route.navigate(['']);
+      // If the information is valid, navigate the user to the login page...
+      this.route.navigate(['']);
 
     }
     
