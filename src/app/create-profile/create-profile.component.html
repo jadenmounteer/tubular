@@ -2,12 +2,15 @@
 <input 
 placeholder="User Name"
 #userNameInput
-><br>
+>
+<br>
 <input placeholder="Password" #passwordInput><br>
 <input placeholder="Repeat Password"><br>
 <input placeholder="Email" #emailInput><br>
 <button (click)="submit()">Create Account</button><br>
 <a routerLink="" routerLinkActive="active">Already a Tubular junkie? Click here to login.</a>
+
+<div class="error-message" [style.opacity]="valid ? '0' : '1'" [style.backgroundColor]="valid ? 'white' : 'red'"> {{ errorMessage }}</div>
 
 <!-- <div *ngFor="let profile of profiles">
     <div> {{ profile.userName }}</div>
