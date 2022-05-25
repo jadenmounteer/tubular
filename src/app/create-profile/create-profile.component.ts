@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProfilesService } from '../services/profiles.service';
 import { Profile } from '../services/profile';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-profile',
@@ -18,7 +19,7 @@ export class CreateProfileComponent implements OnInit {
   @ViewChild('emailInput') emailInput: ElementRef;
 
 
-  constructor(private profilesService: ProfilesService) {
+  constructor(private profilesService: ProfilesService, private route:Router) {
    }
 
   ngOnInit(): void {
@@ -41,6 +42,9 @@ export class CreateProfileComponent implements OnInit {
 
   submit() {    
     this.addProfile();
+
+    // If the information is valid, navigate the user to the login page...
+    //this.route.navigate(['/login']);
   }
 
 }
