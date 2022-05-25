@@ -17,9 +17,12 @@ export class CreateProfileComponent implements OnInit {
   @ViewChild('userNameInput') userNameInput: ElementRef;
   @ViewChild('passwordInput') passwordInput: ElementRef;
   @ViewChild('emailInput') emailInput: ElementRef;
+  public errorMessage: string;
+  public valid: boolean = true;
 
 
   constructor(private profilesService: ProfilesService, private route:Router) {
+  
    }
 
   ngOnInit(): void {
@@ -40,11 +43,42 @@ export class CreateProfileComponent implements OnInit {
       .subscribe(profile => this.profiles.push(profile));
   }
 
-  submit() {    
-    this.addProfile();
+  validateUserName() {
+    const userName = this.userNameInput.nativeElement.value;
+
+    console.log(userName.length);
+    // Check if user name is not blank
+    if (userName.length == 0) {
+      this.errorMessage = "Username cannot be blank";
+      this.userNameInput.nativeElement.focus();
+      this.valid = false;
+      return;
+    }
+
+    // Check if user name does not already exist
+    this.profiles.forEach(profile => {
+      if (profile.userName == userName) {
+        this.errorMessage = "Username is already taken";
+        this.userNameInput.nativeElement.focus();
+      this.valid = false;
+        return;
+      }
+    });
+  }
+
+  submit() {
+    this.valid = true;
+    this.validateUserName();
+    
+    
+    if (this.valid){
+      this.addProfile();
 
     // If the information is valid, navigate the user to the login page...
-    //this.route.navigate(['/login']);
+    this.route.navigate(['']);
+
+    }
+    
   }
 
 }
