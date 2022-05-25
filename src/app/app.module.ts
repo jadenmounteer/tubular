@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { MessageService } from './services/messages.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateProfileComponent
+    CreateProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
