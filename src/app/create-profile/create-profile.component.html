@@ -1,11 +1,13 @@
 <h1>Create Account</h1>
-<form action="#">
-    <input 
-    for="userName" 
-    placeholder="User Name"
-    ngModel=""
-    ><br>
-    <input for="password" placeholder="Password"><br>
-    <input for="repeatPassword" placeholder="Repeat Password"><br>
-    <button (click)="submit()">Create Account</button>
-</form>
+<input 
+for="userName" 
+placeholder="User Name"
+ngModel=""
+><br>
+<input for="password" placeholder="Password"><br>
+<input for="repeatPassword" placeholder="Repeat Password"><br>
+<button (click)="submit()">Create Account</button>
+
+<div *ngFor="let profile of profiles">
+    <div> {{ profile.userName }}</div>
+</div>

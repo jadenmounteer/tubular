@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'tubular';
   
   ngOnInit() {
-    this.getData();
+    //this.getData();
   }
 
   showData(data: any) {
