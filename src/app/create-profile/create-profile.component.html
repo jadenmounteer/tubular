@@ -1,11 +1,11 @@
 <h1>Create Account</h1>
 <input 
-for="userName" 
 placeholder="User Name"
-ngModel=""
+#userNameInput
 ><br>
-<input for="password" placeholder="Password"><br>
-<input for="repeatPassword" placeholder="Repeat Password"><br>
+<input placeholder="Password" #passwordInput><br>
+<input placeholder="Repeat Password"><br>
+<input placeholder="Email" #emailInput><br>
 <button (click)="submit()">Create Account</button>
 
 <div *ngFor="let profile of profiles">

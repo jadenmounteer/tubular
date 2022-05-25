@@ -20,7 +20,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProfilesService {
-  profilesUrl = 'http://localhost:3000/profiles';
+  //profilesUrl = 'http://localhost:3000/profiles';
+  profilesUrl = 'https://tubular-backend.herokuapp.com/profiles';
   private handleError: HandleError;
 
   constructor(private http: HttpClient,
@@ -36,7 +37,7 @@ export class ProfilesService {
 
    /** POST: add a new profile to the database */
   addProfile(profile: Profile): Observable<Profile> {
-    return this.http.post<Profile>(this.profilesUrl, profile, httpOptions)
+    return this.http.post<Profile>(this.profilesUrl, JSON.stringify(profile), httpOptions)
       .pipe(
         catchError(this.handleError('addProfile', profile))
       );

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProfilesService } from '../services/profiles.service';
 import { Profile } from '../services/profile';
 
@@ -13,6 +13,9 @@ export class CreateProfileComponent implements OnInit {
   public password: string;
   public repeatPassword: string;
   profiles: Profile[] = [];
+  @ViewChild('userNameInput') userNameInput: ElementRef;
+  @ViewChild('passwordInput') passwordInput: ElementRef;
+  @ViewChild('emailInput') emailInput: ElementRef;
 
 
   constructor(private profilesService: ProfilesService) {
@@ -28,13 +31,13 @@ export class CreateProfileComponent implements OnInit {
 
   addProfile(): void {
     // The server will generate the id for this new profile
-    const newProfile: Profile = { userName: 'RXJS user', password: 'yoMomma27', email:'test@test.com' } as Profile;
+    const newProfile: Profile = { userName: this.userNameInput.nativeElement.value, password: this.passwordInput.nativeElement.value, email: this.emailInput.nativeElement.value } as Profile;
     this.profilesService
       .addProfile(newProfile)
       .subscribe(profile => this.profiles.push(profile));
   }
 
-  submit() {
+  submit() {    
     this.addProfile();
   }
 
