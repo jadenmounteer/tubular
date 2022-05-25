@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-profile.component.scss']
 })
 export class CreateProfileComponent implements OnInit {
+  public userName: string;
+  public password: string;
+  public repeatPassword: string;
 
-  constructor() { }
+
+  constructor() {
+   }
 
   ngOnInit(): void {
+
+  }
+
+  submit() {
+    
   }
 
 }
