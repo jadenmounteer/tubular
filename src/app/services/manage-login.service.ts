@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/user';
 
 @Injectable()
-export class MessageService {
+export class ManageLoginService {
 
-  addUserLoggedInUserToLocalStorage() {
-
+  addUserLoggedInUserToLocalStorage(user: User) {
+    console.log(user);
   }
 
   getLoggedInUserFromLocalStorage() {

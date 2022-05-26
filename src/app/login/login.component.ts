@@ -2,12 +2,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProfilesService } from '../services/profiles.service';
 import { Profile } from '../services/profile';
 import {Router} from '@angular/router';
+import { User } from '../models/user';
+import { ManageLoginService } from '../services/manage-login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [ProfilesService],
+  providers: [ProfilesService, ManageLoginService],
 })
 export class LoginComponent implements OnInit {
   profiles: Profile[] = [];
@@ -15,8 +17,11 @@ export class LoginComponent implements OnInit {
   @ViewChild('passwordInput') passwordInput: ElementRef;
   public errorMessage: string;
   public valid: boolean = true;
+  userName;
+  password;
+  email;
 
-  constructor(private profilesService: ProfilesService, private route:Router) { }
+  constructor(private profilesService: ProfilesService, private route:Router, private manageLoginService: ManageLoginService) { }
 
   ngOnInit(): void {
     this.getProfiles();
@@ -90,6 +95,9 @@ export class LoginComponent implements OnInit {
     this.profiles.forEach(profile => {
       if (profile.userName == userName && profile.password == password) {
         validLogin = true;
+        this.userName = profile.userName;
+        this.email = profile.email;
+        this.password = profile.password;
         return;
       }
     });
@@ -112,8 +120,10 @@ export class LoginComponent implements OnInit {
     if (this.valid) {
 
       // Create an instance of the user
+      let user = new User(this.userName, this.password, this.email);
 
       // Add the user to ls
+      this.manageLoginService.addUserLoggedInUserToLocalStorage(user);
 
       this.route.navigate(['exercise-library']);
     }
