@@ -4,11 +4,17 @@ import { User } from '../models/user';
 @Injectable()
 export class ManageLoginService {
 
-  addUserLoggedInUserToLocalStorage(user: User) {
-    console.log(user);
+  addLoggedInUserToLocalStorage(user: User) {
+    localStorage.setItem("userName", user.userName);
+    localStorage.setItem("password", user.password);
+    localStorage.setItem("email", user.email);
   }
 
-  getLoggedInUserFromLocalStorage() {
-
+  getLoggedInUserFromLocalStorage():User {
+    const userName = localStorage.getItem("userName");
+    const password = localStorage.getItem("password");
+    const email = localStorage.getItem("email");
+    const loggedInUser = new User(userName, password, email);
+    return loggedInUser;
   }
 }

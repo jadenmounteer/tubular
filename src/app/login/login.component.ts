@@ -123,7 +123,8 @@ export class LoginComponent implements OnInit {
       let user = new User(this.userName, this.password, this.email);
 
       // Add the user to ls
-      this.manageLoginService.addUserLoggedInUserToLocalStorage(user);
+      this.manageLoginService.addLoggedInUserToLocalStorage(user);
+      let loggedInUser = this.manageLoginService.getLoggedInUserFromLocalStorage();
 
       this.route.navigate(['exercise-library']);
     }
