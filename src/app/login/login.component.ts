@@ -109,6 +109,14 @@ export class LoginComponent implements OnInit {
     this.validateUserName();
     this.validateLogin();
 
+    if (this.valid) {
+
+      // Create an instance of the user
+
+      // Add the user to ls
+
+      this.route.navigate(['exercise-library']);
+    }
 
   }
 

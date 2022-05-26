@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { MessageService } from './services/messages.service';
 import { LoginComponent } from './login/login.component';
+import { ExerciseLibraryComponent } from './exercise-library/exercise-library.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateProfileComponent,
-    LoginComponent
+    LoginComponent,
+    ExerciseLibraryComponent
   ],
   imports: [
     BrowserModule,
