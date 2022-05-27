@@ -90,8 +90,9 @@ export class LoginComponent implements OnInit {
   validateLogin() {
     const password = this.passwordInput.nativeElement.value;
     const userName = this.userNameInput.nativeElement.value;
-
     let validLogin = false;
+    console.log(this.profiles);
+    
     this.profiles.forEach(profile => {
       if (profile.userName == userName && profile.password == password) {
         validLogin = true;
