@@ -104,7 +104,7 @@ export class LoginComponent implements OnInit {
     });
 
     if (!validLogin) {
-      this.errorMessage = "Please check your username or password.";
+      this.errorMessage = "Please check your username or password. If you have created an account, try refreshing the page";
       this.userNameInput.nativeElement.focus();
       this.valid = false;
       return;
